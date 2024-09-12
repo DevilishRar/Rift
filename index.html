@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rift</title>
+	<link rel="icon" href="logo2.png" type="image/x-icon">
+    <meta property="og:title" content="Rift Executor">
+    <meta property="og:description" content="Topping Executor">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="getrift.vercel.app">
+    <meta property="og:image" content="https://cdn.discordapp.com/icons/1261332477687894187/9ff94f0e5a6a2333655237db2cd88bfa.webp?size=96">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:color" content="#3498db">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Orbitron:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        :root {
+            --navbar-padding-vertical: 10px;
+            --hero-padding-top: 360px; 
+            --hero-padding-bottom: 456px;
+            --features-padding-bottom: 264px;
+            --showcase-padding-bottom: 264px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            scrollbar-width: thin;
+            scrollbar-color: #1e2430 #000;
+        }
+        body::-webkit-scrollbar {
+            width: 8px;
+        }
+        body::-webkit-scrollbar-track {
+            background: #000;
+        }
+        body::-webkit-scrollbar-thumb {
+            background-color: #1e2430;
+            border-radius: 10px;
+        }
+        .bg-gradient-to-b-black-gray-900 {
+            background: linear-gradient(to bottom, black, #1f2937);
+        }
+        .navbar-custom {
+            background: black;
+            border-radius: 20px;
+            width: calc(100% - 60px);
+            margin: var(--navbar-padding-vertical) auto;
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            position: fixed;
+            top: var(--navbar-padding-vertical);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .navbar-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #0d6efd;
+        }
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            width: 2px;
+            height: 2px;
+        }
+        .hover-3d:hover {
+            transform: translateZ(10px) scale(1.05);
+            transition: transform 0.3s ease;
+        }
+        .section {
+            scroll-margin-top: 70px;
+        }
+    </style>
+</head>
+<body class="bg-black text-white relative overflow-x-hidden">
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const starCount = 100;
+        const stars = [];
+
+        function createStar() {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            star.style.top = Math.random() * window.innerHeight + 'px';
+            star.style.left = Math.random() * window.innerWidth + 'px';
+            document.body.appendChild(star);
+
+            const speed = Math.random() * 0.5 + 0.5;
+            const directionX = Math.random() > 0.5 ? 1 : -1;
+            const directionY = Math.random() > 0.5 ? 1 : -1;
+
+            stars.push({ star, speed, directionX, directionY });
+        }
+
+        for (let i = 0; i < starCount; i++) {
+            createStar();
+        }
+
+        function animateStars() {
+            stars.forEach(({ star, speed, directionX, directionY }, index) => {
+                let top = parseFloat(star.style.top);
+                let left = parseFloat(star.style.left);
+
+                if (top <= 0 || top >= window.innerHeight) {
+                    stars[index].directionY *= -1;
+                }
+                if (left <= 0 || left >= window.innerWidth) {
+                    stars[index].directionX *= -1;
+                }
+
+                star.style.top = top + speed * stars[index].directionY + 'px';
+                star.style.left = left + speed * stars[index].directionX + 'px';
+            });
+
+            requestAnimationFrame(animateStars);
+        }
+
+        animateStars();
+    });
+</script>
+
+<nav class="navbar-custom z-50 shadow-md">
+    <div class="navbar-logo">
+        R
+    </div>
+    <ul class="hidden md:flex space-x-6 text-lg">
+        <li><a href="#home" class="hover:text-blue-400 transition duration-300">Home</a></li>
+        <li><a href="#features" class="hover:text-blue-400 transition duration-300">Features</a></li>
+        <li><a href="#showcase" class="hover:text-blue-400 transition duration-300">Showcase</a></li>
+        <li><a href="https://discord.gg/WV4cJPgHPn" target="_blank" class="hover:text-blue-400 transition duration-300">Contact</a></li>
+    </ul>
+    <button class="md:hidden text-blue-500 focus:outline-none">
+        <i class="fas fa-bars text-2xl"></i>
+    </button>
+</nav>
+
+<section id="home" class="flex flex-col items-center text-center pt-[var(--hero-padding-top)] pb-[var(--hero-padding-bottom)] px-6 bg-gradient-to-b-black-gray-900">
+    <h1 class="text-4xl md:text-6xl font-extrabold text-blue-500 mb-6">Introducing Rift</h1>
+    <p class="text-lg md:text-2xl text-gray-400 max-w-2xl mb-8">
+        Experience a level 8 executor with 98% unc and kernel level bypasses. Unlock limitless possibilities on Roblox with Rift.
+    </p>
+    <a href="https://discord.gg/WV4cJPgHPn" target="_blank">
+        <button class="bg-blue-500 text-black px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-400 transition duration-300">
+            Get Started
+        </button>
+    </a>
+</section>
+
+<section id="features" class="section py-16 px-6 bg-black pb-[var(--features-padding-bottom)]">
+    <h2 class="text-3xl md:text-4xl font-bold text-blue-500 text-center mb-12">Features</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div class="bg-black rounded-xl p-6 shadow-lg hover:shadow-xl transition duration-300 hover-3d">
+            <i class="fas fa-shield-alt text-4xl text-blue-500 mb-4"></i>
+            <h3 class="text-xl font-bold text-white mb-2">High Security</h3>
+            <p class="text-gray-400">
+                Advanced kernel-level security ensures your account remains protected at all times.
+            </p>
+        </div>
+        <div class="bg-black rounded-xl p-6 shadow-lg hover:shadow-xl transition duration-300 hover-3d">
+            <i class="fas fa-bolt text-4xl text-blue-500 mb-4"></i>
+            <h3 class="text-xl font-bold text-white mb-2">Fast Execution</h3>
+            <p class="text-gray-400">
+                Experience lightning-fast script execution with level 8 capabilities.
+            </p>
+        </div>
+        <div class="bg-black rounded-xl p-6 shadow-lg hover:shadow-xl transition duration-300 hover-3d">
+            <i class="fas fa-unlock-alt text-4xl text-blue-500 mb-4"></i>
+            <h3 class="text-xl font-bold text-white mb-2">Multiple Bypasses</h3>
+            <p class="text-gray-400">
+                Unlock various bypasses to enhance your gameplay experience without limitations.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="showcase" class="section py-16 px-6 bg-gradient-to-b-black-gray-900 pb-[var(--showcase-padding-bottom)]">
+    <h2 class="text-3xl md:text-4xl font-bold text-blue-500 text-center mb-12">Showcase</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-black rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300 hover-3d">
+            <img src="ui.png" alt="Screenshot of Rift executor interface" class="w-full h-50 object-cover">
+            <div class="p-4">
+                <h3 class="text-xl font-bold text-white">Rift Interface</h3>
+                <p class="text-gray-400 mt-2">Modern and intuitive interface designed for ease of use.</p>
+            </div>
+        </div>
+        <div class="bg-black rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300 hover-3d">
+            <img src="discord.png" alt="Screenshot showing Rift in action" class="w-full h-50 object-cover">
+            <div class="p-4">
+                <h3 class="text-xl font-bold text-white">Discord Community</h3>
+                <p class="text-gray-400 mt-2">Come join our Discord community and hang out with us.</p>
+            </div>
+        </div>
+        <div class="bg-black rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition duration-300 hover-3d">
+            <img src="console.png" alt="Screenshot of Rift's advanced settings" class="w-full h-50 object-cover">
+            <div class="p-4">
+                <h3 class="text-xl font-bold text-white">Rift Console</h3>
+                <p class="text-gray-400 mt-2">Built in Console inside of Rift and fully functional.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="py-8 px-6 bg-black text-center text-gray-400">
+    <p>&copy; 2024 Rift. All rights reserved.</p>
+</footer>
+<script>
+    document.body.style.overflowY = 'scroll';
+</script>
+</body>
+</html>
